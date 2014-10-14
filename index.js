@@ -18,6 +18,8 @@ module.exports = function(options) {
     launchPage: 'index.html',
     path: 'data',
     fileName: 'imsmanifest.xml'
+  }, function(a, b) {
+    return a === undefined ? b : a;
   });
 
   var firstFile;
