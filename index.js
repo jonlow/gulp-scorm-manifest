@@ -22,6 +22,9 @@ module.exports = function(options) {
     return a === undefined ? b : a;
   });
 
+  // Only add backslash to path if the path is not empty
+  options.path = (options.path.length === 0) ? "" : (options.path + "\\");
+
   var firstFile;
 
   var fileName = options.fileName;
@@ -32,7 +35,7 @@ module.exports = function(options) {
     fileArr: [
       {'@identifier':  'resource_1'},
       {'@type': 'webcontent'},
-      {'@href': options.path+'/'+options.launchPage}
+      {'@href': options.path + options.launchPage}
     ]
   };
 
@@ -56,7 +59,7 @@ module.exports = function(options) {
   var addFile = function(file, lastmode, cb) {
     var fObj = {
       file: {
-        '@href':options.path+'/'+file.relative
+        '@href':options.path + file.relative
       }
     };
     xmlTokens.fileArr.push(fObj);
